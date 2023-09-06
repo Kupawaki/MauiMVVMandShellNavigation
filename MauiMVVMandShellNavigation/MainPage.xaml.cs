@@ -1,17 +1,15 @@
-﻿namespace MauiMVVMandShellNavigation
+﻿using MauiMVVMandShellNavigation.ViewModels;
+
+namespace MauiMVVMandShellNavigation
 {
     public partial class MainPage : ContentPage
     {
         int count = 0;
 
-        public MainPage()
+        public MainPage(MainViewModel mainViewModel)
         {
             InitializeComponent();
-        }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-
+            BindingContext = mainViewModel;
         }
     }
 }

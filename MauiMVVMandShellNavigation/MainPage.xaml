@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiMVVMandShellNavigation.MainPage">
+             xmlns:viewmodel="clr-namespace:MauiMVVMandShellNavigation.ViewModels"
+             x:Class="MauiMVVMandShellNavigation.MainPage"
+             x:DataType="viewmodel:MainViewModel">
 
     <ScrollView>
         <VerticalStackLayout
@@ -15,23 +17,22 @@
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
-            <Entry Placeholder="Enter A Task"/>
-            <Button Text="Add"/>
+            <Entry Placeholder="Enter A Task" Text="{Binding Text}"/>
+            <Button Text="Add" Command="{Binding AddTaskCommand}"/>
 
-            <CollectionView>
-                <CollectionView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Apple</x:String>
-                        <x:String>Orange</x:String>
-                        <x:String>Peach</x:String>
-                    </x:Array>
-                </CollectionView.ItemsSource>
+            <CollectionView ItemsSource="{Binding Items}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="{x:Type x:String}">
                         <SwipeView>
                             <SwipeView.RightItems>
                                 <SwipeItems>
-                                    <SwipeItem Text="Delete" BackgroundColor="Red">
+                                    <SwipeItem Text="Delete" BackgroundColor="Red" 
+                                               Command="{Binding Source=
+                                                            {RelativeSource AncestorType=
+                                                                {x:Type viewmodel:MainViewModel}
+                                                            }, Path=DeleteTaskCommand
+                                                        }"
+                                               CommandParameter="{Binding .}">
                                     </SwipeItem>
                                 </SwipeItems>
                             </SwipeView.RightItems>

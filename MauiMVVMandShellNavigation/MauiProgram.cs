@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MauiMVVMandShellNavigation.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace MauiMVVMandShellNavigation
 {
@@ -15,9 +16,12 @@ namespace MauiMVVMandShellNavigation
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainViewModel>();
+
+            #if DEBUG
+		    builder.Logging.AddDebug();
+            #endif
 
             return builder.Build();
         }
