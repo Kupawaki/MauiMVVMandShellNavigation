@@ -8,7 +8,7 @@
     <VerticalStackLayout>
 
         <Frame BackgroundColor="Gray">
-            <Label Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="{Binding TaskDetail}" VerticalOptions="Center" HorizontalOptions="Center" />
         </Frame>
 
         <Button Text="Go Back" Command="{Binding GoBackCommand}"/>

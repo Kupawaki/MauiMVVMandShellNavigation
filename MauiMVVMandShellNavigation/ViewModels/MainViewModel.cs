@@ -39,9 +39,9 @@ namespace MauiMVVMandShellNavigation.ViewModels
         }
 
         [RelayCommand]
-        async Task TapTask(string Text)
+        async Task TapTask(string tappedText)
         {
-            await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={Text}");
+            await Shell.Current.GoToAsync($"{nameof(DetailPage)}?taskText={tappedText}");
         }
     }
 }

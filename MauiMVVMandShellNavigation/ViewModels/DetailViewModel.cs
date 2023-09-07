@@ -3,11 +3,13 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace MauiMVVMandShellNavigation.ViewModels
 {
-    [QueryProperty("Text", "Text")]
+    //ARG 1 is the internal name for this file, ARG 2 is the ID of the param passed in
+    [QueryProperty("TaskDetail", "taskText")]
     public partial class DetailViewModel : ObservableObject
     {
+        //Why this taskDetail NEEDS to be camel case, while the QueryProperty NEEDS to be upper case is something I am still figuring out
         [ObservableProperty]
-        string text;
+        string taskDetail;
 
         [RelayCommand]
         async Task GoBack()
