@@ -37,5 +37,11 @@ namespace MauiMVVMandShellNavigation.ViewModels
                 Items.Remove(task);
             }
         }
+
+        [RelayCommand]
+        async Task TapTask(string Text)
+        {
+            await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={Text}");
+        }
     }
 }

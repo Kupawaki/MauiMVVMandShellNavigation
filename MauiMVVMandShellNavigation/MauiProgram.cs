@@ -16,8 +16,13 @@ namespace MauiMVVMandShellNavigation
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            //Creates one semi-permanent copy
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
+
+            //Creates several disposable copies
+            builder.Services.AddTransient<DetailPage>();
+            builder.Services.AddTransient<DetailViewModel>();
 
             #if DEBUG
 		    builder.Logging.AddDebug();
